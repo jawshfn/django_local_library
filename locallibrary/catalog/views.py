@@ -42,3 +42,13 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 1
+      # Specify your own template name/location
+class BookDetailView(generic.DetailView):
+    model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author  # Provide the template name for the author list
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
