@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Local Library Home</h1>
+  <p>
+    Welcome to Local Library, a future website being developed by
+    <em>Joshua Nunez!</em>!
+  </p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Genres:</strong>
+      <ul>
+        {% for genre in genre_counts %}
+          <li>{{ genre.name }}: {{ genre.num_books }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+      <form method="get">
+        <label for="search_word">Search word:</label>
+        <input type="text" id="search_word" name="search_word" value="{{ search_word }}">
+        <button type="submit">Search</button>
+      </form>
+    </li>
+    <li><strong>Books containing {{ search_word }}:</strong> {{ books_with_word }}</li>
+  </ul>
+{% endblock %}
